@@ -5,7 +5,7 @@ import "@saasfly/auth/env.mjs";
 import { withNextDevtools } from "@next-devtools/core/plugin";
 // import "@saasfly/api/env"
 import withMDX from "@next/mdx";
-
+import withBuilderDevTools from "@builder.io/dev-tools/next";
 !process.env.SKIP_ENV_VALIDATION && (await import("./src/env.mjs"));
 
 /** @type {import("next").NextConfig} */
@@ -26,7 +26,24 @@ const config = {
     // serverActions: true,
   },
   images: {
-    domains: ["images.unsplash.com", "avatars.githubusercontent.com", "www.twillot.com", "cdnv2.ruguoapp.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.twillot.com",
+      },
+      {
+        protocol: "https",
+        hostname: "cdnv2.ruguoapp.com",
+      },
+    ],
   },
   /** We already do linting and typechecking as separate tasks in CI */
   eslint: { ignoreDuringBuilds: true },
@@ -34,4 +51,5 @@ const config = {
   output: "standalone",
 };
 
-export default withNextDevtools(withMDX()(config));
+export default withBuilderDevTools()(withNextDevtools(withMDX()(config)));
+//export default withNextDevtools(withBuilderDevTools()(withMDX()(config)));
