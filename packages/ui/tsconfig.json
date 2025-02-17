@@ -1,8 +1,9 @@
 {
   "extends": "@saasfly/typescript-config/base.json",
   "compilerOptions": {
-    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
+    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
+    "typeRoots": ["./src/types", "./node_modules/@types"]
   },
-  "include": ["*.ts", "src"],
+  "include": ["*.ts", "src", "src/types/*.d.ts"],
   "exclude": ["node_modules"]
 }
