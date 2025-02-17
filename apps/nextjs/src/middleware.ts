@@ -9,7 +9,7 @@ import { i18n } from "~/config/i18n-config";
 
 const noNeedProcessRoute = [".*\\.png", ".*\\.jpg", ".*\\.opengraph-image.png"];
 
-const noRedirectRoute = ["/api(.*)", "/trpc(.*)", "/admin"];
+const noRedirectRoute = ["/api(.*)", "/trpc(.*)", "/admin", "/__next_devtools__(.*)"];
 
 const publicRoute = [
   "/(\\w{2}/)?signin(.*)",
@@ -20,6 +20,8 @@ const publicRoute = [
   "/(\\w{2}/)?pricing(.*)",
   "/(\\w{2}/)?builder(.*)",
   "^/builder(.*)",
+  "/(\\w{2}/)?preview(.*)",
+  "^/preview(.*)",
   "^/\\w{2}$", // root with locale
 ];
 
